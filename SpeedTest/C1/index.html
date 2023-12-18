@@ -1,0 +1,71 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas 1</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const map = document.getElementById('canvas');
+        const context = map.getContext('2d');
+        map.width = 500;
+        map.height = 400;
+
+        let add = true
+
+        let circle = {
+            x: 250,
+            y: 200
+        }
+
+        setInterval(() => {
+            if (circle.x == 490) {
+                add = false
+            } else if (circle.x == 10) {
+                add = true
+            }
+
+            if (add) {
+                circle.x += 10
+            } else {
+                circle.x -= 10
+            }
+
+            console.log(circle.x);
+
+            main()
+        }, 200)
+
+        function main() {
+            background()
+            drawCircle(circle.x, circle.y)
+        }
+
+        function background() {
+            context.fillStyle = 'green';
+            context.fillRect(0, 0, map.width, map.height)
+        }
+
+        function drawCircle(x, y) {
+            context.beginPath()
+            context.fillStyle = 'yellow'
+            context.arc(x, y, 5, 0, 2 * Math.PI)
+            context.fill()
+            context.closePath()
+        }
+    </script>
+</body>
+
+</html>

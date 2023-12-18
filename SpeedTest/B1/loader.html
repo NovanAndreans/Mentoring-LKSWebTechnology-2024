@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .loader {
+      margin-top: 300px;
+      margin-left: 50px;
+      width: 110px;
+      height: 110px;
+      -webkit-animation: spin 2s linear infinite;
+      /* Safari */
+      animation: spin 2s linear infinite;
+    }
+
+    .right {
+      float: right;
+    }
+
+    .left {
+      float: left;
+    }
+
+    .gap {
+      padding: 5px;
+    }
+
+    .ball {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .ball-1 {
+      background-color: #19A68C;
+    }
+
+    .ball-2 {
+      background-color: #F63D3A;
+    }
+
+    .ball-3 {
+      background-color: #FDA543;
+    }
+
+    .ball-4 {
+      background-color: #193B48;
+    }
+
+
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Safari */
+    @-webkit-keyframes gerak {
+      0% {
+        -webkit-transform: translateX(30);
+        transform: translateX(30);
+      }
+
+      100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes gerak {
+      0% {
+        -webkit-transform: translateX(30);
+        transform: translateX(30);
+      }
+
+      100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <center>
+    <div class="loader">
+      <div class="left">
+        <div class="ball ball-1"></div>
+        <div class="gap"></div>
+        <div class="ball ball-2"></div>
+      </div>
+      <div class="right">
+        <div class="ball ball-3"></div>
+        <div class="gap"></div>
+        <div class="ball ball-4"></div>
+      </div>
+    </div>
+  </center>
+
+</body>
+
+</html>

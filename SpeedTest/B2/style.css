@@ -1,0 +1,92 @@
+.body {
+    background-color: teal;
+}
+
+.body-animate {
+    animation: background;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+h1 {
+    font-size: 45px;
+    text-align: center;
+    font-weight: 100;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: underline;
+    position: relative;
+    color: white;
+}
+
+p {
+    font-size: 100px;
+    text-align: center;
+    position: relative;
+    color: white;
+}
+
+div {
+    text-align: center;
+}
+
+.disappear {
+    display: none;
+}
+
+button {
+    width: 130px;
+    background-color: transparent;
+    border: solid 1px white;
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    border-radius: 5px;
+    padding: 18px 10px;
+    color: white;
+}
+
+button:hover {
+    background-color: white;
+    transition-duration: 750ms;
+    cursor: pointer;
+    color: black;
+}
+
+@keyframes background {
+
+    0% {
+        background-color: teal;
+    }
+
+    20% {
+        background-color: thistle;
+    }
+
+    30% {
+        background-color: tomato;
+    }
+
+    40% {
+        background-color: turquoise;
+    }
+
+    50% {
+        background-color: wheat;
+    }
+
+    70% {
+        background-color: turquoise;
+    }
+
+    80% {
+        background-color: tomato;
+    }
+
+    90% {
+        background-color: thistle;
+    }
+
+    100% {
+        background-color: teal;
+    }
+}
