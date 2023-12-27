@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Middleware\TokenValidation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('signin', [AuthController::class, 'signin']);
+
+Route::middleware(TokenValidation::class)->group(function () {
+    Route::post('signout', [AuthController::class, 'signout']);
+
+    Route::resource('laporan', LaporanController::class);
 });

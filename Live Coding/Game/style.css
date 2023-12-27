@@ -1,0 +1,103 @@
+body {
+    background-color: aqua !important;
+}
+
+.menu {
+    min-height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    border: 5px solid #000;
+    width: 300px;
+    height: 250px;
+    padding: 20;
+}
+
+.box h1 {
+    text-align: center;
+}
+
+.logo {
+    width: 280;
+    height: 200;
+    animation: rotate 5s infinite;
+}
+
+@keyframes rotate {
+
+    0%,
+    100% {
+        transform: rotateZ(0deg);
+    }
+
+    40% {
+        transform: rotateZ(30deg);
+    }
+
+    80% {
+        transform: rotateZ(-30deg);
+    }
+}
+
+.bg-wrap {
+    text-align: center;
+}
+
+.bg {
+    width: 50;
+    height: 50;
+}
+
+.bg-1 {
+    background-image: url('./assets/education-pattern.jpg');
+    color: black;
+}
+
+.bg-2 {
+    background-image: url('./assets/download.jpg');
+    color: black;
+}
+
+.bg-3 {
+    background-image: url('./assets/images.jpeg');
+    color: black;
+}
+
+.bg-4 {
+    background-image: url('./assets/thumb900.jpg');
+    color: white;
+}
+
+.sidebar {
+    height: 500;
+    border: 3px solid green;
+    padding: 30px;
+}
+
+.logo-sidebar {
+    margin-top: 70;
+    margin-left: 15;
+    text-align: center;
+    font-weight: bold;
+}
+
+.logo-sidebar img {
+    width: 300;
+    height: 200;
+}
+
+h3 span {
+    margin-left: 30;
+}
+
+.fa-heart,
+.fa-heart-o {
+    color: red;
+}
+
+.hidden {
+    display: none;
+}

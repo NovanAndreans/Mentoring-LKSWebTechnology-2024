@@ -1,0 +1,200 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shooting Game</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./plugins/bootstrap.min.css">
+    <link rel="stylesheet" href="./plugins/fontawesome-free-6.5.1-web/css/all.min.css">
+</head>
+
+<body class="menu">
+    <div>
+        <img class="logo" src="./assets/pngwing.com (13).png" alt="">
+        <div class="box box-1">
+            <h1>Welcome</h1>
+            <ul>
+                <li>Input Name</li>
+                <li>Choose Background</li>
+                <li>Enjoy</li>
+            </ul>
+            <button id="start" class="btn btn-primary form-control">Start</button>
+        </div>
+
+        <div class="box box-2">
+            <div class="input-wrap">
+                <div class="form-group">
+                    <label for="name" class="form-label"><strong>Name</strong></label>
+                    <input id="inputName" name="name" type="text" class="form-control" autofocus>
+                </div>
+            </div>
+            <div class="bg-wrap mt-2">
+                <img class="bg bg-1" src="./assets/education-pattern.jpg" alt="">
+                <img class="bg bg-2" src="./assets/download.jpg" alt="">
+                <img class="bg bg-3" src="./assets/images.jpeg" alt="">
+                <img class="bg bg-4" src="./assets/thumb900.jpg" alt="">
+            </div>
+            <button id="play" class="btn btn-success form-control mt-4">Play</button>
+        </div>
+
+        <div id="highscore" class="highscore">
+            <table class="w-100 table-bordered table striped" id="table">
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                    <th>Time</th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="game row p-5">
+            <div class="col-4">
+                <button id="quit" class="btn btn-danger">Quit</button>
+
+                <div class="sidebar mt-5">
+                    <table>
+                        <tr>
+                            <td>
+                                <strong>
+                                    <h3>Name</h3>
+                                </strong>
+                            </td>
+                            <td>
+                                <h3>:</h3>
+                            </td>
+                            <td>
+                                <h3><span id="name-sidebar"></span></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>
+                                    <h3>Score</h3>
+                                </strong>
+                            </td>
+                            <td>
+                                <h3>:</h3>
+                            </td>
+                            <td>
+                                <h3><span id="score-sidebar">0</span></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>
+                                    <h3>Time</h3>
+                                </strong>
+                            </td>
+                            <td>
+                                <h3>:</h3>
+                            </td>
+                            <td>
+                                <h3><span id="time-sidebar">00:00</span></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3 id="heart-sidebar"></h3>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="logo-sidebar">
+                        <img src="./assets/pngwing.com (13).png" alt="">
+                        Shooting Game
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <canvas id="canvas" class="game-canvas hidden"></canvas>
+                <h1 id="cooldown">Press enter to Play</h1>
+            </div>
+        </div>
+    </div>
+
+    <script src="./plugins/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(() => {
+            initialize()
+
+            function initialize() {
+                $('.box-2').hide();
+                $('.game').hide();
+
+                let highscore = localStorage.getItem('highscore');
+
+                if (highscore != null) {
+                    JSON.parse(highscore).forEach((element, index) => {
+                        $('#table').append('<tr><td>' + (index + 1) + '</td><td>' + element.name + '</td><td>' + element.score + '</td><td>' + element.time + '</td></tr>')
+                    });
+                }
+            }
+
+            $('#start').click(() => {
+                $('.box-1').hide();
+                $('.box-2').show();
+                $('.form-control').focus();
+            });
+
+            $('.bg-1').click(() => {
+                $('body').removeClass()
+                $('body').addClass('menu bg-1')
+            })
+
+            $('.bg-2').click(() => {
+                $('body').removeClass()
+                $('body').addClass('menu bg-2')
+            })
+
+            $('.bg-3').click(() => {
+                $('body').removeClass()
+                $('body').addClass('menu bg-3')
+            })
+
+            $('.bg-4').click(() => {
+                $('body').removeClass()
+                $('body').addClass('menu bg-4')
+            })
+
+            $('#play').click(() => {
+                if ($('#inputName').val() == '' && localStorage.getItem('name') == null) {
+                    alert('nama wajib diisi!')
+                } else {
+                    $('.background').hide();
+                    $('.highscore').hide();
+                    $('.box-2').hide();
+                    $('.logo').hide();
+                    $('body').removeClass('menu')
+                    $('.game').show();
+
+                    if ($('#inputName').val() != '') {
+                        localStorage.setItem('name', $('#inputName').val())
+                    }
+
+                    isPlay = true
+
+                    $('#name-sidebar').empty()
+                    $('#name-sidebar').append(localStorage.getItem('name'))
+                }
+            });
+
+            $('#quit').click(() => {
+                if (confirm('Are you sure want to quit ?')) {
+                    $('.background').show();
+                    $('.game').hide();
+                    $('.highscore').show();
+                    $('.logo').show();
+                    $('.box-1').show();
+                    $('body').addClass('menu');
+                } else {
+                    return
+                }
+            });
+        })
+    </script>
+    <script src="./script.js"></script>
+</body>
+
+</html>

@@ -14,13 +14,12 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        $pengguna = Peserta::where('username', $request->username)->where('password', $request->password)->first();
+        $pengguna = Peserta::where('username', $request->username)
+            ->where('password', $request->password)->first();
+        if (!$pengguna) return Controller::failed('Gagal Signin');
 
         $token = md5($request->username);
-
         $pengguna->update(['token' => $token]);
-
-        if (!$pengguna) return Controller::failed('Gagal Signin');
 
         return Controller::success('Berhasil Signin', $pengguna);
     }

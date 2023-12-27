@@ -12,17 +12,13 @@ class Controller extends BaseController
 
     public function success($message = 'Success', $data = null, $code = 200)
     {
-        if ($data == null) {
-            return response()->json(['message' => $message], $code);
-        }
+        if ($data == null) return response()->json(['message' => $message], $code);
         return response()->json(['message' => $message, 'data' => $data], $code);
     }
 
     public function failed($message = 'Failed', $data = null, $code = 200)
     {
-        if ($data == null) {
-            return response()->json(['message' => $message], $code);
-        }
+        if ($data == null) return response()->json(['message' => $message], $code);
         return response()->json(['message' => $message, 'data' => $data], $code);
     }
 }
