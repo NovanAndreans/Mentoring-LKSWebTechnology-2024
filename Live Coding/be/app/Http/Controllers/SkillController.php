@@ -2,18 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Laporan;
+use App\Models\Skill;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class LaporanController extends Controller
+class SkillController extends Controller
 {
-    protected $laporanModel;
-    public function __construct(Laporan $laporan)
-    {
-        $this->laporanModel = $laporan;
-    }
-
     /**
      * Display a listing of the resource.
      */
@@ -35,17 +28,13 @@ class LaporanController extends Controller
      */
     public function store(Request $request)
     {
-        $create = collect($request->only($this->laporanModel->getFillable()))
-            ->toArray();
-        $laporan = $this->laporanModel->create($create);
-
-        return Controller::success('Berhasil Melapor', $laporan);
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Laporan $laporan)
+    public function show(Skill $skill)
     {
         //
     }
@@ -53,7 +42,7 @@ class LaporanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Laporan $laporan)
+    public function edit(Skill $skill)
     {
         //
     }
@@ -61,7 +50,7 @@ class LaporanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Laporan $laporan)
+    public function update(Request $request, Skill $skill)
     {
         //
     }
@@ -69,7 +58,7 @@ class LaporanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Laporan $laporan)
+    public function destroy(Skill $skill)
     {
         //
     }

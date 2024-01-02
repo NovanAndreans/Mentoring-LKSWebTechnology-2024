@@ -18,6 +18,7 @@ class AuthValidate
     public function handle(Request $request, Closure $next): Response
     {
         $token = $request->query('token');
+        if (!$token) return response()->json(['message' => 'Sesi Habis']);
 
         $val = Peserta::where('token', $token)->first();
 

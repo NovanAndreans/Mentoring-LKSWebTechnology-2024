@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Laporan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class LaporanController extends Controller
+class UserController extends Controller
 {
-    protected $laporanModel;
-    public function __construct(Laporan $laporan)
+    protected $user;
+    public function __construct(User $user)
     {
-        $this->laporanModel = $laporan;
+        $this->user = $user;
     }
-
     /**
      * Display a listing of the resource.
      */
@@ -35,17 +34,18 @@ class LaporanController extends Controller
      */
     public function store(Request $request)
     {
-        $create = collect($request->only($this->laporanModel->getFillable()))
+        $collect = collect($request->only($this->user->getFillable()))
+            ->put('password', Hash::make($request->password))
             ->toArray();
-        $laporan = $this->laporanModel->create($create);
+        $user = $this->user->create($collect);
 
-        return Controller::success('Berhasil Melapor', $laporan);
+        return Controller::success('Berhasil tambah User', $user);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Laporan $laporan)
+    public function show(string $id)
     {
         //
     }
@@ -53,7 +53,7 @@ class LaporanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Laporan $laporan)
+    public function edit(string $id)
     {
         //
     }
@@ -61,7 +61,7 @@ class LaporanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Laporan $laporan)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -69,7 +69,7 @@ class LaporanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Laporan $laporan)
+    public function destroy(string $id)
     {
         //
     }

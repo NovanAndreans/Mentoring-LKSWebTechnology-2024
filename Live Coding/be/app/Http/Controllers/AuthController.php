@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Peserta;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -22,5 +24,28 @@ class AuthController extends Controller
         $pengguna->update(['token' => $token]);
 
         return Controller::success('Berhasil Signin', $pengguna);
+    }
+    public function signin2(Request $request)
+    {
+        $credentials = $request->validate([
+            'name' => 'required',
+            'password' => 'required'
+        ]);
+
+        $credentials = [
+            'name' => $request->name,
+            'password' => $request->password
+        ];
+
+        if (Auth::attempt($credentials)) {
+            /** @var User $pengguna */
+            $pengguna = Auth::user();
+
+            $token = $pengguna->createToken('')->plainTextToken;
+            $pengguna->update(['remember_token' => $token]);
+
+            return Controller::success('Berhasil Signin', $pengguna);
+        }
+        return Controller::failed('Gagal Signin');
     }
 }

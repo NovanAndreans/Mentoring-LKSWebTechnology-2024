@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Peserta;
+use App\Models\Skill;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,12 +14,11 @@ return new class extends Migration
     public function up(): void
     {
         $peserta = new Peserta();
-        Schema::create('laporans', function (Blueprint $table) use ($peserta) {
+        Schema::create('skill_pesertas', function (Blueprint $table) use ($peserta) {
             $table->id();
-            $table->string('judul');
-            $table->text('note');
             $table->foreignIdFor(Peserta::class, 'id_peserta');
-            $table->timestamps();
+            $table->foreignIdFor(Skill::class, 'id_skill');
+
             $table->foreign('id_peserta')->references($peserta->getKeyName())->on($peserta->getTable())->onDelete('cascade');
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('laporans');
+        Schema::dropIfExists('skill_pesertas');
     }
 };

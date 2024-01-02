@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Laporan;
 use App\Models\Peserta;
+use App\Models\SkillPeserta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PesertaController extends Controller
 {
-    protected $pesertaModel;
-    public function __construct(Peserta $laporan)
+    protected $pesertaModel, $skillPeserta, $laporan;
+    public function __construct(SkillPeserta $skillPeserta, Peserta $peserta, Laporan $laporan)
     {
-        $this->pesertaModel = $laporan;
+        $this->skillPeserta = $skillPeserta;
+        $this->laporan = $laporan;
+        $this->pesertaModel = $peserta;
     }
     /**
      * Display a listing of the resource.
@@ -59,7 +64,7 @@ class PesertaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Peserta $peserta)
+    public function update($id, Request $request)
     {
         //
     }
@@ -67,8 +72,25 @@ class PesertaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Peserta $peserta)
+    public function destroy($id)
     {
-        //
+        DB::beginTransaction();
+
+        try {
+            $this->laporan->where('id_peserta', $id)->delete();
+
+            $this->skillPeserta->where('id_peserta', $id)->delete();
+
+            $this->pesertaModel->findOrFail($id)->delete();
+
+            DB::commit();
+
+            return Controller::success('Berhasil Menghapus Peserta');
+        } catch (\Throwable $th) {
+
+            DB::rollBack();
+
+            return Controller::success('Berhasil Menghapus Peserta');
+        }
     }
 }
