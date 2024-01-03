@@ -19,7 +19,9 @@ class LaporanController extends Controller
      */
     public function index()
     {
-        //
+        $laporan = $this->laporanModel->with(['peserta'])->get();
+
+        return Controller::success('Berhasil Menampilkan Laporan', $laporan);
     }
 
     /**
@@ -45,9 +47,11 @@ class LaporanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Laporan $laporan)
+    public function show($id)
     {
-        //
+        $laporan = $this->laporanModel->with(['peserta'])->findOrFail($id);
+
+        return Controller::success('Berhasil Menampilkan Laporan', $laporan);
     }
 
     /**
@@ -61,16 +65,23 @@ class LaporanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Laporan $laporan)
+    public function update($id, Request $request)
     {
-        //
+        $laporan = $this->laporanModel->findOrFail($id);
+        $update = collect($request->only($this->laporanModel->getFillable()))
+            ->toArray();
+        $laporan->update($update);
+
+        return Controller::success('Berhasil Update', $laporan);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Laporan $laporan)
+    public function destroy($id)
     {
-        //
+        $laporan = $this->laporanModel->findOrFail($id)->delete();
+
+        return Controller::success('Berhasil Delete');
     }
 }

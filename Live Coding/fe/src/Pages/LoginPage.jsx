@@ -1,6 +1,7 @@
 import { useRef } from "react"
 import client from "../Utils/router"
 import { useNavigate } from "react-router-dom"
+import { sessionSuccess } from "../constants/Constants"
 
 export const LoginPage = () => {
     const idCardSocieties = useRef()
@@ -18,6 +19,8 @@ export const LoginPage = () => {
         client.post('signin', data).then(({ data }) => {
             localStorage.setItem('nama', data.data.nama)
             localStorage.setItem('token', data.data.token)
+
+            localStorage.setItem(sessionSuccess, data.message)
 
             nav('/dashboard')
         })

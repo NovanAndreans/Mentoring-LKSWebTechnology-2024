@@ -11,4 +11,9 @@ class Laporan extends Model
     protected $fillable = [
         'judul', 'note', 'id_peserta'
     ];
+
+    public function peserta()
+    {
+        return $this->belongsTo(Peserta::class, 'id_peserta');
+    }
 }

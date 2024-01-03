@@ -1,0 +1,1 @@
+export const sessionSuccess = 'success'

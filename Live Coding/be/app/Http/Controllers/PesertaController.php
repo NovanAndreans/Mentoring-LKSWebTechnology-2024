@@ -22,7 +22,9 @@ class PesertaController extends Controller
      */
     public function index()
     {
-        //
+        $peserta = $this->pesertaModel->all();
+
+        return Controller::success('Berhasil menampilkan peserta', $peserta);
     }
 
     /**

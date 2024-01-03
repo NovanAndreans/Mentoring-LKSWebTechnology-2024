@@ -1,4 +1,7 @@
+import { useState } from "react"
 import { Navigate, Outlet } from "react-router-dom"
+import { checkAlert } from "../Utils/alert"
+import { sessionSuccess } from "../constants/Constants"
 
 export const GuardSkin = () => {
     if (localStorage.getItem('token') == null) {
@@ -9,7 +12,9 @@ export const GuardSkin = () => {
         <div>
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
                 <div class="container">
+
                     <a class="navbar-brand" href="#">Job Seekers Platform</a>
+
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -23,7 +28,6 @@ export const GuardSkin = () => {
                     </div>
                 </div>
             </nav>
-
             <Outlet />
 
             <footer>
