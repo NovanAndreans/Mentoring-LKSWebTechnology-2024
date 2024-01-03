@@ -18,7 +18,7 @@ class AuthController extends Controller
 
         $pengguna = Peserta::where('username', $request->username)
             ->where('password', $request->password)->first();
-        if (!$pengguna) return Controller::failed('Gagal Signin');
+        if (!$pengguna) return Controller::failed('Username atau password salah');
 
         $token = md5($request->username);
         $pengguna->update(['token' => $token]);
@@ -46,6 +46,6 @@ class AuthController extends Controller
 
             return Controller::success('Berhasil Signin', $pengguna);
         }
-        return Controller::failed('Gagal Signin');
+        return Controller::failed('Username atau password salah');
     }
 }

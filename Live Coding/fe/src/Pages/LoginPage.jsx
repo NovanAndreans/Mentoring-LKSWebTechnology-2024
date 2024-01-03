@@ -1,7 +1,7 @@
 import { useRef } from "react"
 import client from "../Utils/router"
 import { useNavigate } from "react-router-dom"
-import { sessionSuccess } from "../constants/Constants"
+import { sessionError, sessionSuccess } from "../constants/Constants"
 
 export const LoginPage = () => {
     const idCardSocieties = useRef()
@@ -23,6 +23,8 @@ export const LoginPage = () => {
             localStorage.setItem(sessionSuccess, data.message)
 
             nav('/dashboard')
+        }).catch(({ response }) => {
+            localStorage.setItem(sessionError, response.data.message)
         })
     }
 
