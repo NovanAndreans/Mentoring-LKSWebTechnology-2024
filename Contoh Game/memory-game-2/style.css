@@ -1,0 +1,45 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+.grid {
+	display: flex;
+	flex-wrap: wrap;
+	width: 400px;
+}
+
+.grid img {
+	margin: 10px;
+	box-shadow: 5px 6px 7px rgba(0, 0, 0, 0.5);
+}
+
+.grid img:hover,
+.grid img:active {
+	transform: scale(1.1);
+	box-shadow: 7px 8px 9px rgba(0, 0, 0, 0.5);
+}
+
+button {
+	padding: 10px 20px;
+	background-color: hsl(10, 100%, 50%);
+	border-radius: 2px;
+	border: none;
+	color: blank;
+	margin-top: 20px;
+	box-shadow: 5px 6px 7px rgba(0, 0, 0, 0.5);
+}
+
+button:hover {
+	background-color: hsl(10, 90%, 40%);
+	color: white;
+	box-shadow: 7px 8px 9px rgba(0, 0, 0, 0.5);
+}

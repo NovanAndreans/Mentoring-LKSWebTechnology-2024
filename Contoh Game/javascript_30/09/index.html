@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Console Tricks!</title>
+	</head>
+	<body>
+		<p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+		<script>
+			const dogs = [
+				{ name: "Snickers", age: 2 },
+				{ name: "hugo", age: 8 },
+			];
+
+			function makeGreen() {
+				const p = document.querySelector("p");
+				p.style.color = "#BADA55";
+				p.style.fontSize = "50px";
+			}
+
+			// Regular
+
+			console.log("here");
+
+			// Interpolated
+			console.log("hello %s", "World");
+			// Styled
+			console.log("%c styled", "font-size: 30px; background: crimson");
+			// warning!
+			console.warn("warning");
+
+			// Error :|
+			console.error("error");
+
+			// Info
+			console.info("info");
+			// Testing
+			console.assert(1 == 1, "that wrong"); // false will display the text
+
+			// clearing
+			console.clear();
+
+			// Viewing DOM Elements
+			const p = document.querySelector("p");
+			console.log(p);
+			console.dir(p);
+			// Grouping together
+			dogs.forEach((e) => {
+				// console.group(`${e.name}`);
+				console.groupCollapsed(`${e.name}`);
+				console.log(`${e.name}`);
+				console.log(`${e.age}`);
+				console.groupEnd(`${e.name}`);
+			});
+
+			// counting
+			console.count("Hello World");
+			console.count("Hello World");
+			console.count("Hello You");
+			console.count("Hello World");
+
+			// timing
+			console.time("fecth");
+			fetch("https://api.github.com/users/zulfikar-dityaa")
+				.then((blob) => blob.json())
+				.then((data) => {
+					console.timeEnd("fecth");
+					console.table(data);
+				});
+		</script>
+	</body>
+</html>

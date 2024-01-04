@@ -1,0 +1,60 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background-color: #111;
+	color: white;
+}
+
+.grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	height: 520px;
+	width: 520px;
+	padding: 5px;
+	border: 1px solid white;
+}
+
+.grid div {
+	height: 50px;
+	width: 50px;
+	border: 1px solid skyblue;
+}
+
+button {
+	padding: 10px 20px;
+	background-color: skyblue;
+	border: none;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+button:hover {
+	transform: scale(1.1);
+	background-color: white;
+	color: black;
+	border: 1px solid skyblue;
+}
+
+.score {
+	font-size: 30px;
+	font-weight: 800;
+	margin-bottom: 20px;
+}
+
+.snake {
+	background-color: chartreuse;
+}
+
+.apple {
+	background-color: crimson;
+}

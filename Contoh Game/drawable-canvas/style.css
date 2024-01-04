@@ -1,0 +1,20 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	height: 100vh;
+	display: flex;
+	background-image: linear-gradient(to right, #233c23, #0f9b0f);
+}
+
+#canvas {
+	width: 80%;
+	height: 90%;
+	margin: auto;
+	border-radius: 20px;
+	background-color: white;
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}

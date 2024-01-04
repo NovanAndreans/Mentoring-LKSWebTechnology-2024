@@ -1,0 +1,78 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Patua One';
+}
+
+body {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	grid-gap: 10px;
+	background-color: #97aabd;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	padding: 0px;
+	margin: 10px auto;
+
+	background-color: #ffffff;
+}
+
+table tr td {
+	width: 210px;
+	height: 210px;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	font-size: 90px;
+	text-align: center;
+}
+
+table tr td:hover {
+	background: #dddddd;
+	cursor: pointer;
+}
+
+.column {
+	margin-left: 50px;
+	justify-content: center;
+	align-items: center;
+}
+
+.info {
+	background-color: rgb(75, 206, 0);
+	width: 520px;
+	height: 120px;
+	margin: 10px auto;
+	font-size: 48px;
+	text-align: center;
+	padding: 20px;
+	margin-bottom: 80px;
+}
+
+.winner {
+	width: 240px;
+	height: 140px;
+	margin: 10px auto;
+	font-size: 60px;
+	text-align: center;
+}
+
+.winner span {
+	font-size: 40px;
+	display: block;
+}
+
+#reload {
+	width: 240px;
+	height: 100px;
+	margin: 10px auto;
+	display: block;
+	border: none;
+	background-color: #272727;
+	font-size: 40px;
+}
+
+#reload:hover {
+	background-color: #575656;
+}

@@ -1,0 +1,46 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.text {
+	text-align: center;
+}
+
+.grid {
+	border: 1px solid black;
+	height: 500px;
+	width: 500px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.grid div {
+	height: 70px;
+	width: 70px;
+	border: 1px solid chocolate;
+}
+
+.player-one {
+	background-color: red;
+	border-radius: 10px;
+}
+
+.player-two {
+	background-color: skyblue;
+	border-radius: 10px;
+}
+
+button {
+	padding: 10px 20px;
+	background-color: chocolate;
+	cursor: pointer;
+	margin-top: 20px;
+}

@@ -1,0 +1,50 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	justify-content: center;
+	align-items: center;
+	background-color: #111;
+}
+
+h1 {
+	color: white;
+	margin-bottom: 20px;
+}
+
+.grid {
+	width: 310px;
+	height: 310px;
+	border: 1px solid white;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.grid div {
+	width: 20px;
+	height: 20px;
+	border: 1px solid chocolate;
+}
+
+.invader {
+	background-color: fuchsia;
+	border-radius: 10px;
+}
+
+.shooter {
+	background-color: skyblue;
+}
+
+.laser {
+	background-color: chartreuse;
+}
+
+.bom {
+	background-color: crimson;
+}

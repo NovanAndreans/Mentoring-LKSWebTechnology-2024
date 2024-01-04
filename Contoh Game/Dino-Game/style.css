@@ -1,0 +1,85 @@
+* {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+}
+
+.game {
+  width: 500px;
+  height: 200px;
+  border: 1px solid black;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+#character {
+  width: 50px;
+  height: 50px;
+  background-image: url("https://www.svgrepo.com/show/77672/dinosaur-hand-drawn-toy-animal.svg");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 0;
+}
+
+.rotated {
+  transform: rotate(-180deg);
+  bottom: -5px !important;
+  transition: 300ms ease all;
+}
+
+.animate {
+  animation: jump 0.4s linear;
+}
+
+@keyframes jump {
+  0% {
+    bottom: 0px;
+  }
+
+  30% {
+    bottom: 30px;
+  }
+
+  70% {
+    bottom: 40px;
+  }
+
+  100% {
+    bottom: 0px;
+  }
+}
+
+#block {
+  background-image: url("https://www.svgrepo.com/show/59213/bug.svg");
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 500px;
+  animation: block 1s infinite linear;
+}
+
+@keyframes block {
+  0% {
+    left: 500px;
+  }
+
+  100% {
+    left: -20px;
+  }
+}
+
+p {
+  text-align: center;
+}

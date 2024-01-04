@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Membuat Game Edukasi Menggunakan Jquery</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h3>Membuat Game Edukasi Menggunakan Jquery</h3>
+                <p>Pertanyaan : <span id="number1" class="badge badge-primary"></span>
+                    <span id="operasi"></span> <span id="number2" class="badge badge-primary"></span>
+                </p>
+                <label for="">Silahkan masukkan jawaban kamu !</label>
+                <br>
+                <input type="number" id="total" autofocus>
+                <br>
+                <br>
+                <button onclick="result()" class="btn btn-primary">Submit</button>
+                <button onclick="showAnswer()" class="btn btn-warning">Show Answer</button>
+                <button onclick="myFunction()" class="btn btn-danger">Pass</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $("#total").keypress(function (e) {
+            if (e.which == 13) {
+                result();
+            }
+        });
+
+        function myFunction() {
+            var x = Math.floor((Math.random() * 10) + 1);
+            var y = Math.floor((Math.random() * 10) + 1);
+            var ops = Math.floor((Math.random() * 4) + 1);
+            switch (ops) {
+                case 1:
+                    ops = '+';
+                    break;
+                case 2:
+                    ops = '-';
+                    break;
+                case 3:
+                    ops = 'x';
+                    break;
+                case 4:
+                    ops = ':';
+                    break;
+            }
+            $("#number1").text(x);
+            $("#number2").text(y);
+            $("#operasi").text(ops);
+        }
+
+        myFunction()
+
+        function result() {
+            let result;
+            var num1 = $("#number1").text();
+            var num2 = $("#number2").text();
+            var ops = $("#operasi").text();
+
+            switch (ops) {
+                case '+':
+                    result = parseInt(num1) + parseInt(num2);
+                    break;
+                case '-':
+                    result = parseInt(num1) - parseInt(num2);
+                    break;
+                case 'x':
+                    result = parseInt(num1) * parseInt(num2);
+                    break;
+                case ':':
+                    result = parseInt(num1) / parseInt(num2);
+                    break;
+            }
+
+            var total = $("#total").val();
+            if (total == result) {
+                alert("Yeay. Jawaban Kamu Benar !");
+                $("#total").val("");
+                myFunction();
+            } else {
+                alert("Yah. Jawaban Kamu Salah, Coba Lagi ya!");
+                $("#total").val("");
+            }
+        }
+
+        function showAnswer() {
+            let result;
+            var num1 = $("#number1").text();
+            var num2 = $("#number2").text();
+            var ops = $("#operasi").text();
+
+            switch (ops) {
+                case '+':
+                    result = parseInt(num1) + parseInt(num2);
+                    break;
+                case '-':
+                    result = parseInt(num1) - parseInt(num2);
+                    break;
+                case 'x':
+                    result = parseInt(num1) * parseInt(num2);
+                    break;
+                case ':':
+                    result = parseInt(num1) / parseInt(num2);
+                    break;
+            }
+            alert("Jawaban yang benar : " + result);
+        }
+    </script>
+
+</body>
+
+</html>

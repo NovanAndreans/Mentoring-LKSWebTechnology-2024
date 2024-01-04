@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Scope Css Variable and Js</title>
+		<link rel="stylesheet" href="./style.css" />
+		<style>
+			:root {
+				--base: #ffc600;
+				--spacing: 10px;
+				--blur: 0px;
+			}
+
+			body {
+				text-align: center;
+				background: #193549;
+				color: white;
+				font-family: "Courier New", Courier, monospace;
+				font-weight: 200;
+				font-size: 50px;
+			}
+
+			.controls {
+				margin-bottom: 50px;
+			}
+
+			input {
+				width: 100px;
+			}
+
+			img {
+				padding: var(--spacing);
+				background: var(--base);
+				filter: blur(var(--blur));
+			}
+
+			.hl {
+				color: var(--base);
+			}
+		</style>
+	</head>
+	<body>
+		<h2>Update css variable with <span class="hl">JS</span></h2>
+		<div class="controls">
+			<label for="">Spacing</label>
+			<input
+				type="range"
+				name="spacing"
+				id="spacing"
+				min="10"
+				max="100"
+				value="10"
+				data-sizing="px"
+			/>
+			<label for="">Blur:</label>
+			<input
+				type="range"
+				name="blur"
+				id="blur"
+				min="0"
+				max="25"
+				value="0"
+				data-sizing="px"
+			/>
+			<label for="">base color:</label>
+			<input type="color" name="base" id="base" value="#ffc600" />
+		</div>
+		<img src="https://source.unsplash.com/7bwQXzbF6KE/800x500" alt="" />
+		<script src="./app.js"></script>
+	</body>
+</html>
